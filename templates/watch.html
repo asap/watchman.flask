@@ -1,0 +1,18 @@
+<h1>Watchman</h1>
+
+{% if not watchlist %}
+<p>Nothing is defined in the watchlist.</p>
+<p><a href="https://github.com/asap/watchman.flask/blob/master/README.md">
+    RTFM buddy</a></p>
+{% endif %}
+
+{% for element in watchlist %}
+{% if element.service and element.urls %}
+<h2>Service: {{ element.service }}</h2>
+<ul>
+    {% for url in element.urls %}
+    <li>{{ url.url }} - <span class="status">{{ url.status }}</span></li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endfor %}
